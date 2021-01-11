@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title>Notes Market Place-Login</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/icons/favicon.ico">
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!--bootstrap css-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!--Responsive CSS-->
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <div class="main-wrap">
+        <div class="container-login" style="background-image: url('images/posters/banner-with-overlay-11.jpg');">
+            <div class="wrap-login">
+                <span class="login-form-title">
+                    <img src="images/logo/top-logo.png">
+                </span>
+                <form class="login-form">
+                    <div class="heading">
+                        <h4 class="text-center">Login</h4>
+                        <p class="text-center">Enter your email address and passwod to login</p>
+                    </div>
+                    <div class="form-group m-bottom-30">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6" style="width: 30%;">
+                                <label for="exampleInputPassword1" style="display: inline-block;">Password</label>
+                            </div>
+                            <div class="col-md-6" style="width: 70%;">
+                                <label for="exampleInputPassword1" class="text-right"><span><a href="forgot.html" style="text-decoration: none !important; color: #6255a5;">Forgot Password?</a></span></label>
+                            </div>
+                        </div>
+                        <div class="inputContainer">
+                            <input type="password" id="password-field" class="form-control" placeholder="Password" name="password">
+                            <span toggle="#password-field" class="eye field-icon toggle-password"><img src="images/icons/eye.png">
+                            </span>
+                        </div>
+                        <small id="password-help" class="form-text text-muted"><span>The password that you've enter is incorrect.</span></small>
+                    </div>
+                    <div class="form-group login-checkbox">
+                        <input type="checkbox" id="exampleCheck1">
+                        <label for="exampleCheck1">Remember Me</label>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" id="login-btn">LOGIN</button>
+                    <p class="text-center" id="not-account">Don't have an account?<a href="signup.html" style="text-decoration: none !important; color: #6255a5;">Sign Up</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Jquery Js -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!--    popper Js  -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap Js -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!--custom script-->
+    <script type="text/javascript" src="js/script.js"></script>
+
+</body>
+
+</html>
