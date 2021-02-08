@@ -7,10 +7,10 @@ function sticky_header() {
     var scrollTop = jQuery(window).scrollTop();;
     if (scrollTop > header_height) {
         jQuery('body').addClass('sticky-nav')
-        $(".home_navbar .navbar img").attr("src", "images/logo/top-logo1.png");
+        $(".home_navbar .navbar img").attr("src", "../images/logo/top-logo1.png");
     } else {
         jQuery('body').removeClass('sticky-nav')
-        $(".home_navbar .navbar img").attr("src", "images/logo/top-logo.png");
+        $(".home_navbar .navbar img").attr("src", "../images/logo/top-logo.png");
     }
 }
 
