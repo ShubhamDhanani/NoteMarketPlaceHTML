@@ -172,7 +172,7 @@ if(!isset($_SESSION['fname'])){
                         
                     $user = $_SESSION['id'];
                         
-                        $selectquery = "SELECT sellernotes.CreatedDate as added_date, sellernotes.Title , notecategories.Name as category, referencedata.value as Status
+                        $selectquery = "SELECT sellernotes.ID,sellernotes.CreatedDate as added_date, sellernotes.Title , notecategories.Name as category, referencedata.value as Status
                         FROM sellernotes, notecategories, referencedata
                         WHERE sellernotes.Category = notecategories.ID and sellernotes.Status=referencedata.ID AND sellernotes.SellerID=$user AND sellernotes.Status IN(6,7,8)ORDER BY sellernotes.CreatedDate DESC LIMIT $start_from,$num_per_page";
                         $select = mysqli_query($con,$selectquery);
@@ -192,13 +192,13 @@ if(!isset($_SESSION['fname'])){
                             <?php if($result['Status'] == "Draft"){
                                 ?>
                                 <td>
-                                <a href="#" class="icon"><img src="../images/icons/edit.png"></a>
-                                <a href="#" class="icon"><img src="../images/icons/delete.png"></a>
+                                <a href="../php/updatenote.php?id=<?php echo $result['ID'];?>" class="icon" title="Update"><img src="../images/icons/edit.png"></a>
+                                <a href="../php/deletenote.php?id=<?php echo $result['ID'];?>" class="icon" title="Delete"><img src="../images/icons/delete.png"></a>
                                 </td>
                                 <?php
                             }else{
                                 ?>
-                                <td><a href="#" class="icon"><img src="../images/icons/eye.png"></a></td>
+                                <td><a href="#" class="icon" title="View"><img src="../images/icons/eye.png"></a></td>
                                 <?php
                             }
                                 ?>

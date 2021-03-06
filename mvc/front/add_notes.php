@@ -236,7 +236,7 @@ if(isset($_POST['publish'])){
                         <a class="nav-link" href="dashboard.php">Sell Your Notes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Buyer_Request.html">Buyer Requests</a>
+                        <a class="nav-link" href="buyer_request.php">Buyer Requests</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="faq.html">FAQ</a>
@@ -252,7 +252,7 @@ if(isset($_POST['publish'])){
                             <a class="dropdown-item" href="my_sold_notes.html">My Sold Notes</a>
                             <a class="dropdown-item" href="my_rejected_notes.html">My Rejected Notes</a>
                             <a class="dropdown-item" href="change_pwd.html">Change Password</a>
-                            <a class="dropdown-item" href="home-page.html"><span>LOGOUT</span></a>
+                            <a class="dropdown-item" href="../php/logout.php"><span>LOGOUT</span></a>
                         </div>
                     </li>
                     <li class="nav-item">
