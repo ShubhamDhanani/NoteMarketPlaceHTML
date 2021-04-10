@@ -11,69 +11,9 @@ if(!isset($_SESSION['fname'])){
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
-    <title>Notes Market Place - add notes</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="../images/icons/favicon.ico">
-    <!--Google Fonts-->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!--bootstrap css-->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/style.css">
-    <!--Responsive CSS-->
-    <link rel="stylesheet" href="../css/responsive.css">
-</head>
-
-<body>
-
-    <!--Header-->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-            <a class="navbar-brand" href="home-page.html">
-                <img src="../images/logo/top-logo1.png" alt="logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../front/search_page.php">Search Notes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../front/sellnotes.php">Sell Your Notes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../front/buyer_request.php">Buyer Requests</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../front/faq.html">FAQ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../front/contact_us.html">Contact Us</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="user_img" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../images/person/user-img.png"></a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="../front/user-profile.html">My Profile</a>
-                            <a class="dropdown-item" href="../front/myDownloads.html">My Downloads</a>
-                            <a class="dropdown-item" href="../front/my_sold_notes.html">My Sold Notes</a>
-                            <a class="dropdown-item" href="../front/my_rejected_notes.html">My Rejected Notes</a>
-                            <a class="dropdown-item" href="../front/change_pwd.html">Change Password</a>
-                            <a class="dropdown-item" href="logout.php"><span>LOGOUT</span></a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="logout.php" style="text-decoration: none;"><button type="button" class="btn btn-primary btn-lg btn-block btn_login">Logout</button></a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+<?php
+    include '../php/front-header.php';
+?>
 
     <!-- Add Notes -->
     <div class="add-note-image m-top-100">
@@ -375,40 +315,8 @@ if(isset($_POST['update'])){
         </form>
     </div>
 
-    <!--    footer  -->
-    <hr>
-    <section class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 footer_content">
-                    <p>Copyright © <a href="https://www.tatvasoft.com/">TatvaSoft</a> All Rights Reserved.</p>
-                </div>
-                <div class="col-md-6 footer_social text-right">
-                    <ul class="social-list">
-                        <li><a href="#">
-                                <img src="../images/icons/facebook.png">
-                            </a></li>
-                        <li><a href="#">
-                                <img src="../images/icons/twitter.png">
-                            </a></li>
-                        <li><a href="#">
-                                <img src="../images/icons/linkedin.png">
-                            </a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Jquery Js -->
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <!--    popper Js  -->
-    <script type="text/javascript" src="../js/popper.min.js"></script>
-    <!-- Bootstrap Js -->
-    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
-    <!--custom script-->
-    <script type="text/javascript" src="../js/script.js"></script>
-
-</body>
+<?php
+    include '../php/footer.php';
+?>
 
 </html>
