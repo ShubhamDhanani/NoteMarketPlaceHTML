@@ -313,8 +313,9 @@ if(isset($_POST['publish'])){
                         <button onclick="document.getElementById('getdisplaypic').click()">
                             <img src="../images/icons/upload-file.png">
                         </button>
-                        <input type="file" id="getdisplaypic" name="displaypic" style="border:none;width:70%;margin-left:-7%;" <?php if(isset($_POST['save'])){                  echo "disabled" ; }?>>
-                        <p class="text-center">Upload a picture</p>
+                        <input type="file" id="getdisplaypic" name="displaypic" style="border:none;width:70%;margin-left:-7%;" <?php if(isset($_POST['save'])){ echo "disabled" .' '.'Placeholder='.'If You Want To change this file then pls go to draft page and edit it' ; }?>>
+                        <p class="text-center"><?php if(isset($_POST['save'])){echo 'If You Want To change this file then pls go to draft page and edit it' ; }
+                            else{echo " Upload a picture";}?></p>
                     </div>
                 </div>
                 <div class="form-group col-md-6">
@@ -324,7 +325,8 @@ if(isset($_POST['publish'])){
                             <img src="../images/icons/upload-file.png">
                         </button>
                         <input type="file" id="getnote" name="uploadnote[]" style="border:none;width:70%;margin-left:-7%;" <?php if(isset($_POST['save'])){                  echo "disabled" ; }?>  required multiple>
-                        <p class="text-center">Upload your notes</p>
+                        <p class="text-center"><?php if(isset($_POST['save'])){echo 'If You Want To change this file then pls go to draft page and edit it' ; }
+                            else{echo " Upload Your Note";}?></p>
                     </div>
                 </div>
             </div>
@@ -438,7 +440,8 @@ if(isset($_POST['publish'])){
                             <img src="../images/icons/upload-file.png">
                         </button>
                         <input type="file" id="getpreview" name="preview" style="border:none;width:70%;margin-left:-7%;" required <?php if(isset($_POST['save'])){                  echo "disabled" ; }?>>
-                        <p class="text-center">Upload a file</p>
+                        <p class="text-center"><?php if(isset($_POST['save'])){echo 'If You Want To change this file then pls go to draft page and edit it' ; }
+                            else{echo " Upload a File";}?></p>
                     </div>
                 </div>
             </div>

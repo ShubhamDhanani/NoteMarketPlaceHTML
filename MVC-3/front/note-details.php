@@ -33,7 +33,18 @@ $table= "no";
                     <div class="book_left">
                         <div class="row">
                             <div class="col-md-4 col-sm-4">
-                                <img src="../Member/<?php echo $result['SellerID'].'/'.$result['ID'].'/'.$result['DisplayPicture'];?>">
+                               <?php if($result['DisplayPicture']==""){
+                                ?>
+                                <img src="../images/note/example.jpg">
+                                <?php
+                                }
+                                else{
+                                    ?>
+                                    <img src="../Member/<?php echo $result['SellerID'].'/'.$result['ID'].'/'.$result['DisplayPicture'];?>">
+                                    <?php
+                                }
+                                ?>
+                                
                             </div>
                             <div class="col-md-8 col-sm-8">
                                 <h2><?php echo $result['Title'];?></h2>

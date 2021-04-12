@@ -159,19 +159,19 @@
             <div class="collapse navbar-collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item <?php if($pagename=="SearchNotes"){echo "active";}?>">
-                        <a class="nav-link" href="search.php">Search Notes</a>
+                        <a class="nav-link" href="<?php if($pagename=="UpdateNote"){ echo "../front/";} ?>search.php">Search Notes</a>
                     </li>
                     <li class="nav-item <?php if($pagename=="SellNotes"){echo "active";}?>">
-                        <a class="nav-link" href="sellnotes.php">Sell Your Notes</a>
+                        <a class="nav-link" href="<?php if($pagename=="UpdateNote"){ echo "../front/";} ?>sellnotes.php">Sell Your Notes</a>
                     </li>
                     <li class="nav-item <?php if($pagename=="BuyerRequests"){echo "active";}?>">
-                        <a class="nav-link" href="Buyer_Request.php">Buyer Requests</a>
+                        <a class="nav-link" href="<?php if($pagename=="UpdateNote"){ echo "../front/";} ?>Buyer_Request.php">Buyer Requests</a>
                     </li>
                     <li class="nav-item <?php if($pagename=="FAQ"){echo "active";}?>">
-                        <a class="nav-link" href="faq.php">FAQ</a>
+                        <a class="nav-link" href="<?php if($pagename=="UpdateNote"){ echo "../front/";} ?>faq.php">FAQ</a>
                     </li>
                     <li class="nav-item <?php if($pagename=="ContactUs"){echo "active";}?>">
-                        <a class="nav-link" href="contact_us.php">Contact Us</a>
+                        <a class="nav-link" href="<?php if($pagename=="UpdateNote"){ echo "../front/";} ?>contact_us.php">Contact Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="user_img" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="<?php
@@ -186,11 +186,11 @@
                             else{echo ".."."/images/person/t1.jpg";}
                             ?>"></a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item <?php if($pagename=="Profile"){echo "active";}?>" href="user-profile.php">My Profile</a>
-                            <a class="dropdown-item <?php if($pagename=="MyDownloads"){echo "active";}?>" href="myDownloads.php">My Downloads</a>
-                            <a class="dropdown-item <?php if($pagename=="MySoldNotes"){echo "active";}?>" href="my_sold_notes.php">My Sold Notes</a>
-                            <a class="dropdown-item <?php if($pagename=="MyRejectedNotes"){echo "active";}?>" href="my_rejected_notes.php">My Rejected Notes</a>
-                            <a class="dropdown-item <?php if($pagename=="ChangePassword"){echo "active";}?>" href="change_pwd.php">Change Password</a>
+                            <a class="dropdown-item <?php if($pagename=="Profile"){echo "active";}?>" href="<?php if($pagename=="UpdateNote"){ echo "../front/";} ?>user-profile.php">My Profile</a>
+                            <a class="dropdown-item <?php if($pagename=="MyDownloads"){echo "active";}?>" href="<?php if($pagename=="UpdateNote"){ echo "../front/";} ?>myDownloads.php">My Downloads</a>
+                            <a class="dropdown-item <?php if($pagename=="MySoldNotes"){echo "active";}?>" href="<?php if($pagename=="UpdateNote"){ echo "../front/";} ?>my_sold_notes.php">My Sold Notes</a>
+                            <a class="dropdown-item <?php if($pagename=="MyRejectedNotes"){echo "active";}?>" href="<?php if($pagename=="UpdateNote"){ echo "../front/";} ?>my_rejected_notes.php">My Rejected Notes</a>
+                            <a class="dropdown-item <?php if($pagename=="ChangePassword"){echo "active";}?>" href="<?php if($pagename=="UpdateNote"){ echo "../front/";} ?>change_pwd.php">Change Password</a>
                             <a class="dropdown-item" href="../php/logout.php"><span>LOGOUT</span></a>
                         </div>
                     </li>

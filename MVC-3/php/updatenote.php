@@ -2,44 +2,35 @@
 session_start();
 include '../php/dbcon.php';
 include '../src/mail.php';
+$pagename = "UpdateNote";
+if(isset($_GET['id'])){
+$id = $_GET['id'];
+$_SESSION['noteid']=$id;
+}
+
 
 if(!isset($_SESSION['fname'])){
     header("location:login.php");
 }
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<?php
-    include '../php/front-header.php';
-?>
-
-    <!-- Add Notes -->
-    <div class="add-note-image m-top-100">
-        <div class="user-text">
-            <h1>Add Notes</h1>
-        </div>
-    </div>
-
-    <!-- User Form -->
-
-    <div class="container form-wrap">
-        <form method="post"  action="">
-            <div class="user-heading">
-                <h3>Basic Note Details</h3>
-            </div>
- <?php
-
-
-$id = $_GET['id'];
-$selectq = "select * from sellernotes where ID=$id";
+$noteid = $_SESSION['noteid'];
+$selectq = "select * from sellernotes where ID=$noteid";
 $selectque = mysqli_query($con,$selectq);
-$result = mysqli_fetch_array($selectque);
+$resu = mysqli_fetch_array($selectque);
+$selfile = mysqli_query($con,"select * from sellernotesattachements where NoteID=$noteid");
+$res = mysqli_fetch_assoc($selfile);
+echo $resu['Title']."<br>";
+echo $resu['Title']."<br>";
+echo $resu['Title']."<br>";
+echo $resu['Title']."<br>";
+echo $resu['Title']."<br>";
+echo $resu['Title']."<br>";
+echo $resu['Title']."<br>";
+echo $resu['Title']."<br>";
 
 
 if(isset($_POST['update'])){
-        $ids = $_GET['id'];
+        $noteid = $_SESSION['noteid'];
+        $user = $_SESSION['id'];
        $title= mysqli_real_escape_string($con,$_POST['title'] );
        $category= mysqli_real_escape_string($con,$_POST['category'] );
        $type= mysqli_real_escape_string($con,$_POST['type'] );
@@ -52,6 +43,9 @@ if(isset($_POST['update'])){
        $professor= mysqli_real_escape_string($con,$_POST['professor'] );
        $sellfor= mysqli_real_escape_string($con,$_POST['sellfor'] );
        $price= mysqli_real_escape_string($con,$_POST['price'] );
+       $displaypic= $_FILES['displaypic'];
+       $uploadnote= $_FILES['uploadnote'];
+       $preview= $_FILES['preview'];
     
         if(!$type){
             $type = 4;
@@ -75,8 +69,138 @@ if(isset($_POST['update'])){
         if($sellfor==5){
             $price = 0;
         }
+    
+        $displaypicname = $displaypic['name'];
+        if($displaypicname!==""){            
+            $displaypic_ext = explode('.',$displaypicname);
+            $displaypic_ext_check = strtolower(end($displaypic_ext));
+            $valid_displaypic_ext = array('png','jpg','jpeg');
+            
+            if(in_array($displaypic_ext_check,$valid_displaypic_ext)){
+                
+            $file1 = '../Member/'.$user.'/'.$noteid.'/'.$resu['DisplayPicture'];
+            unlink($file1);
+            $displaypicnewname = "DP_".date("dmyhis").'.'.$displaypic_ext_check;
+            $displaypic_dest = '../Member/'.$user.'/'.$noteid.'/'.$displaypicnewname;
+            $displaypicpath = $displaypic['tmp_name'];
+            move_uploaded_file($displaypicpath,$displaypic_dest);
+            
+            $updatedp = mysqli_query($con,"update sellernotes set DisplayPicture='$displaypicnewname',ModifiedDate=current_timestamp(),ModifiedBy=$user where ID=$noteid");  
+                
+            }
+            else{
+                ?>
+                <script>
+                    alert("Display Profile Pic must be in jpg,jpeg,png format");
+                </script>
+                <?php
+            }
+            
+        }
         
-        $update = " update sellernotes set Title='$title', Category=$category, NoteType=$type, NumberofPages=$pages, Description='$description', Country=$country, UniversityName='$institution' , Course='$course', CourseCode='$coursecode', Professor='$professor', IsPaid=$sellfor , SellingPrice=$price where ID=$ids ";
+        $previewname = $preview['name'];
+        if($previewname!==""){
+            $preview_ext = explode('.',$previewname);
+            $preview_ext_check = strtolower(end($preview_ext));
+            $valid_preview_ext = array('pdf');
+            
+            if(in_array($preview_ext_check,$valid_preview_ext)){
+                
+            $file2 = '../Member/'.$user.'/'.$noteid.'/'.$resu['NotesPreview'];
+            unlink($file2);    
+            $previewnewname = "Preview_".date("dmyhis").'.'.$preview_ext_check;
+            $previewpath = $preview['tmp_name'];
+            $preview_dest = '../Member/'.$user.'/'.$noteid.'/'.$previewnewname;
+                move_uploaded_file($previewpath,$preview_dest);
+                $updatepn = mysqli_query($con,"update sellernotes set NotesPreview='$previewnewname',ModifiedDate=current_timestamp(),ModifiedBy=$user where ID=$noteid");
+                
+            }
+            else{
+                ?>
+                <script>
+                    alert("Preview Note must be in pdf format");
+                </script>
+                <?php
+            }
+            
+        }
+    
+        $uploadnotename = $uploadnote['name'][0];
+        if($uploadnotename!==""){
+            
+            $countfiles = count($uploadnote['name']);
+            for($i=0;$i<$countfiles;$i++){
+            $uploadnotename = $uploadnote['name'][$i];
+            $uploadnote_ext = explode('.',$uploadnotename);
+            $uploadnote_ext_check = strtolower(end($uploadnote_ext));
+            $valid_uploadnote_ext = array('pdf');
+            if(in_array($uploadnote_ext_check,$valid_uploadnote_ext)){$v=1;}
+            else{$vn=1;}
+            }
+            if($vn!==1){
+                $file3 = '../Member/'.$user.'/'.$noteid.'/Attachment/'.$res['FileName'];
+                unlink($file3);
+            }
+            else{}
+            
+            
+            
+            if($countfiles>1 and $v==1 and $vn!==1){
+            $zip = new ZipArchive();
+            $zip_name = "../Member/$user/$noteid/Attachment/"."Attachment_".date('dmyhis').".zip";
+            $uploadnotenewname = "Attachment_".date('dmyhis').".zip";
+            // Create a zip target
+            if ($zip->open($zip_name, ZipArchive::CREATE) !== TRUE) {
+            ?>
+            <script>
+                alert("Sorry ZIP creation is not working currently");
+            </script>
+            <?php
+        }
+        for($i=0;$i<$countfiles;$i++) {
+        
+            if ($_FILES['uploadnote']['tmp_name'][$i] == '') {
+                continue;
+            }
+            
+            // Moving files to zip.
+            $zip->addFromString($_FILES['uploadnote']['name'][$i], file_get_contents($_FILES['uploadnote']['tmp_name'][$i]));
+            
+        }
+        $zip->close();
+        
+        // Create HTML Link option to download zip
+        $success = basename($zip_name);
+        $uploadnote_dest= $zip_name;
+        
+        
+            $updatenote = mysqli_query($con,"UPDATE sellernotesattachements set FileName='$uploadnotenewname',FilePath='$uploadnote_dest',ModifiedDate=current_timestamp(),ModifiedBy=$user where NoteID=$noteid");
+        
+        }
+        elseif($countfiles==1 and $v==1 and $vn!==1){
+        for($i=0;$i<$countfiles;$i++){
+        
+        $uploadnotenewname = "Attachment_[$i]_".date("dmyhis").'.'.$uploadnote_ext_check;
+        $uploadnotepath = $uploadnote['tmp_name'];
+    
+        
+        $uploadnote_dest = '../Member/'.$user.'/'.$noteid.'/Attachment'.'/'.$uploadnotenewname;
+        move_uploaded_file($uploadnotepath[$i],$uploadnote_dest);
+            
+        }
+        }
+        else{
+                ?>
+                <script>
+                    alert("Upload Note must be in pdf format");
+                </script>
+                <?php
+            }
+            
+        }
+    
+        
+        $update = " update sellernotes set Title='$title', Category=$category, NoteType=$type, NumberofPages=$pages, Description='$description', Country=$country, UniversityName='$institution' , Course='$course', CourseCode='$coursecode', Professor='$professor', IsPaid=$sellfor , SellingPrice=$price,ModifiedDate=current_timestamp(),ModifiedBy=$user where ID=$noteid ";
         $updatequery = mysqli_query($con,$update);
     
         if($updatequery){
@@ -87,7 +211,6 @@ if(isset($_POST['update'])){
             </script>
             
             <?php
-            $noteid = $ids;
             $seller = $_SESSION['fname'];
             $query2 = "UPDATE sellernotes SET Status = 7 WHERE ID =$noteid";
             $uquery = mysqli_query($con, $query2);
@@ -146,10 +269,32 @@ if(isset($_POST['update'])){
 }
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<?php
+    include '../php/front-header.php';
+?>
+
+    <!-- Add Notes -->
+    <div class="add-note-image m-top-100">
+        <div class="user-text">
+            <h1>Add Notes</h1>
+        </div>
+    </div>
+
+    <!-- User Form -->
+
+    <div class="container form-wrap">
+        <form method="post" enctype="multipart/form-data" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
+            <div class="user-heading">
+                <h3>Basic Note Details</h3>
+            </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="exampleInputfname">Title *</label>
-                    <input type="text" class="form-control" id="exampleInputfname" placeholder="Enter your notes title" name="title" required value="<?php echo $result['Title'];?>" >
+                    <input type="text" class="form-control" id="exampleInputfname" placeholder="Enter your notes title" name="title" required value="<?php echo $resu['Title'];?>" >
                 </div>
                 <div class="form-group col-md-6">
                     <label for="exampleInputfname">Category *</label>
@@ -165,7 +310,7 @@ if(isset($_POST['update'])){
                             for($i=1;$i<=$categoryrows;$i++){
                                 $categoryrow = mysqli_fetch_array($categoryquery);
                             ?>
-                            <option value="<?php echo $categoryrow['ID'];?>" <?php if($categoryrow['ID']==$result['Category']){echo "selected";}?>><?php echo $categoryrow['Name'] ?></option>
+                            <option value="<?php echo $categoryrow['ID'];?>" <?php if($categoryrow['ID']==$resu['Category']){echo "selected";}?>><?php echo $categoryrow['Name'] ?></option>
                             <?php
                             }
                             ?>
@@ -180,7 +325,7 @@ if(isset($_POST['update'])){
                         <button >
                             <img src="../images/icons/upload-file.png">
                         </button>
-                        <input type="file" id="getdisplaypic" name="displaypic" style="border:none;width:70%;margin-left:-7%;"  disabled>
+                        <input type="file" id="getdisplaypic" name="displaypic" style="border:none;width:70%;margin-left:-7%;" >
                         <p class="text-center">Upload a picture</p>
                     </div>
                 </div>
@@ -190,7 +335,7 @@ if(isset($_POST['update'])){
                         <button >
                             <img src="../images/icons/upload-file.png">
                         </button>
-                        <input type="file" id="getnote" name="uploadnote[]" style="border:none;width:70%;margin-left:-7%;" multiple disabled>
+                        <input type="file" id="getnote" name="uploadnote[]" style="border:none;width:70%;margin-left:-7%;" multiple>
                         <p class="text-center">Upload your notes</p>
                     </div>
                 </div>
@@ -210,7 +355,7 @@ if(isset($_POST['update'])){
                             for($i=1;$i<=$typerows;$i++){
                                 $typerow = mysqli_fetch_array($typequery);
                             ?>
-                            <option value="<?php echo $typerow['ID'] ?>" <?php if($typerow['ID']==$result['NoteType']){echo "selected";}?>><?php echo $typerow['Name'] ?></option>
+                            <option value="<?php echo $typerow['ID'] ?>" <?php if($typerow['ID']==$resu['NoteType']){echo "selected";}?>><?php echo $typerow['Name'] ?></option>
                             <?php
                             }
                             ?>
@@ -219,13 +364,13 @@ if(isset($_POST['update'])){
                 </div>
                 <div class="form-group col-md-6">
                     <label for="exampleInputfname">Number of Pages</label>
-                    <input type="text" class="form-control" id="exampleInputfname" placeholder="Enter number of pages" name="pages" value=<?php echo $result['NumberofPages']; ?>>
+                    <input type="text" class="form-control" id="exampleInputfname" placeholder="Enter number of pages" name="pages" value="<?php echo $resu['NumberofPages']; ?>">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label for="exampleInputfname">Description *</label>
-                    <textarea class="form-control" id="exampleInputfname" placeholder="Enter your notes title" rows="5" required name="description" maxlength="255"><?php echo $result['Description'] ?></textarea>
+                    <textarea class="form-control" id="exampleInputfname" placeholder="Enter your notes title" rows="5" required name="description" maxlength="255"><?php echo $resu['Description'] ?></textarea>
                 </div>
             </div>
             <div class="user-heading">
@@ -246,7 +391,7 @@ if(isset($_POST['update'])){
                             for($i=1;$i<=$countryrows;$i++){
                                 $countryrow = mysqli_fetch_array($countryquery);
                             ?>
-                            <option value="<?php echo $countryrow['ID'] ?>" <?php if($countryrow['ID']==$result['Country']){echo "selected";}?>><?php echo $countryrow['Name'] ?></option>
+                            <option value="<?php echo $countryrow['ID'] ?>" <?php if($countryrow['ID']==$resu['Country']){echo "selected";}?>><?php echo $countryrow['Name'] ?></option>
                             <?php
                             }
                             ?>
@@ -255,7 +400,7 @@ if(isset($_POST['update'])){
                 </div>
                 <div class="form-group col-md-6">
                     <label for="exampleInputlname">Institution Name</label>
-                    <input type="text" class="form-control" id="exampleInputlname" placeholder="Enter your institution name" name="institution" value="<?php echo $result['UniversityName']; ?>">
+                    <input type="text" class="form-control" id="exampleInputlname" placeholder="Enter your institution name" name="institution" value="<?php echo $resu['UniversityName']; ?>">
                 </div>
             </div>
             <div class="user-heading">
@@ -264,17 +409,17 @@ if(isset($_POST['update'])){
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="exampleInputfname">Course Name</label>
-                    <input type="text" class="form-control" id="exampleInputfname" placeholder="Enter your course name" name="course" value="<?php echo $result['Course']; ?>">
+                    <input type="text" class="form-control" id="exampleInputfname" placeholder="Enter your course name" name="course" value="<?php echo $resu['Course']; ?>">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="exampleInputlname">Course Code</label>
-                    <input type="text" class="form-control" id="exampleInputlname" placeholder="Enter your course code" name="coursecode" value="<?php echo $result['CourseCode']; ?>">
+                    <input type="text" class="form-control" id="exampleInputlname" placeholder="Enter your course code" name="coursecode" value="<?php echo $resu['CourseCode']; ?>">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="exampleInputfname">Professor / Lecturer</label>
-                    <input type="text" class="form-control" id="exampleInputfname" placeholder="Enter your professor name" name="professor" value="<?php echo $result['Professor']; ?>">
+                    <input type="text" class="form-control" id="exampleInputfname" placeholder="Enter your professor name" name="professor" value="<?php echo $resu['Professor']; ?>">
                 </div>
             </div>
             <div class="user-heading">
@@ -285,16 +430,16 @@ if(isset($_POST['update'])){
                     <div class="form-group">
                         <label for="exampleInputfname">Sell For*</label>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="sellfor" value="5" required <?php if($result['IsPaid']==5){echo "checked"; } ?>>
+                            <input class="form-check-input" type="radio" name="sellfor" value="5" required <?php if($resu['IsPaid']==5){echo "checked"; } ?>>
                             <label class="form-check-label" for="inlineRadio1" style="margin-left: 10px;">Free</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="sellfor" id="inlineRadio2" value="4" <?php if($result['IsPaid']==4){echo "checked"; } ?>>
+                            <input class="form-check-input" type="radio" name="sellfor" id="inlineRadio2" value="4" <?php if($resu['IsPaid']==4){echo "checked"; } ?>>
                             <label class="form-check-label" for="inlineRadio2" style="margin-left: 10px;">Paid</label>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputfname">Sell Price *</label>
-                            <input type="text" class="form-control" id="exampleInputfname" placeholder="Enter your price" name="price" required value="<?php echo $result['SellingPrice']; ?>">
+                            <input type="text" class="form-control" id="exampleInputfname" placeholder="Enter your price" name="price" required value="<?php echo $resu['SellingPrice']; ?>">
                         </div>
                     </div>
                 </div>
@@ -304,7 +449,7 @@ if(isset($_POST['update'])){
                         <button>
                             <img src="../images/icons/upload-file.png">
                         </button>
-                        <input type="file" id="getpreview" name="preview" style="border:none;width:70%;margin-left:-7%;" disabled>
+                        <input type="file" id="getpreview" name="preview" style="border:none;width:70%;margin-left:-7%;">
                         <p class="text-center">Upload a file</p>
                     </div>
                 </div>
