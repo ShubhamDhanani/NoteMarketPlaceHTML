@@ -97,7 +97,7 @@ $table= "no";
                 <div class="col-md-6 team" id="team1">
                     <div class="team1">
                         <div class="team_img col-md-6">
-                            <img src="../images/person/customer-1.png" alt="cu1">
+                            <img src="../images/testimonial/customer-1.png" alt="cu1">
                         </div>
                         <div class="team_intro">
                             <span class="team_name">Walter Meller</span><br>
@@ -111,7 +111,7 @@ $table= "no";
                 <div class="col-md-6 team" id="team2">
                     <div class="team2">
                         <div class="team_img col-md-6">
-                            <img src="../images/person/customer-2.png">
+                            <img src="../images/testimonial/customer-2.png">
                         </div>
                         <div class="team_intro">
                             <span class="team_name">Jonnie Riley</span><br>
@@ -125,7 +125,7 @@ $table= "no";
                 <div class="col-md-6 team" id="team3">
                     <div class="team3">
                         <div class="team_img col-md-6">
-                            <img src="../images/person/customer-3.png">
+                            <img src="../images/testimonial/customer-3.png">
                         </div>
                         <div class="team_intro">
                             <span class="team_name">Amilia Luna</span><br>
@@ -139,7 +139,7 @@ $table= "no";
                 <div class="col-md-6 team" id="team4">
                     <div class="team4">
                         <div class="team_img col-md-6">
-                            <img src="../images/person/customer-4.png">
+                            <img src="../images/testimonial/customer-4.png">
                         </div>
                         <div class="team_intro">
                             <span class="team_name">Daniel Cardos</span><br>
