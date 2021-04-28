@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2021 at 05:05 AM
+-- Generation Time: Apr 28, 2021 at 09:46 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.1
 
@@ -98,7 +98,11 @@ INSERT INTO `downloads` (`ID`, `NoteID`, `Seller`, `Downloader`, `IsSellerHasAll
 (54, 187, 63, 62, b'01', '../Member/63/187/Attachment/Attachment_300321063755.zip', b'1', '2021-04-01 20:59:18', b'00', '0', 'computer science', 'CS', '2021-03-30 22:12:15', 62, '2021-04-01 20:59:18', 62, b'1'),
 (63, 185, 62, 62, b'00', '../Member/62/185/Attachment/Attachment_300321061736.zip', b'0', NULL, b'01', '50', 'Digital Electronics', 'CS', '2021-04-01 21:02:55', 62, '2021-04-01 21:04:52', 62, b'1'),
 (75, 111, 63, 63, b'01', '../Member/63/111/Attachment/Attachment_[0]_040321123710.pdf', b'1', '2021-04-07 20:36:03', b'01', '499', 'hack the hacker', 'CS', '2021-04-07 17:46:19', 63, '2021-04-07 20:36:03', 63, b'1'),
-(76, 188, 65, 62, b'01', '../Member/65/188/Attachment/Attachment_[0]_090421084039.pdf', b'1', '2021-04-09 12:22:29', b'00', '0', 'aaa', 'IT', '2021-04-09 12:22:29', 62, NULL, NULL, b'0');
+(76, 188, 65, 62, b'01', '../Member/65/188/Attachment/Attachment_[0]_090421084039.pdf', b'1', '2021-04-09 12:22:29', b'00', '0', 'aaa', 'IT', '2021-04-09 12:22:29', 62, NULL, NULL, b'0'),
+(77, 191, 66, 84, b'01', '../Member/66/191/Attachment/Attachment_[0]_100421021503.pdf', b'1', '2021-04-27 17:57:09', b'00', '0', 'check', 'Science', '2021-04-27 17:57:09', 84, NULL, NULL, b'1'),
+(78, 135, 63, 84, b'01', '../Member/63/135/Attachment/Attachment_[0]_050321022709.pdf', b'1', '2021-04-27 18:20:23', b'01', '599', 'Data intelligence', 'IT', '2021-04-27 18:02:09', 84, '2021-04-27 18:20:23', 84, b'1'),
+(79, 191, 66, 85, b'01', '../Member/66/191/Attachment/Attachment_[0]_100421021503.pdf', b'1', '2021-04-28 11:44:19', b'00', '0', 'check', 'Science', '2021-04-28 11:44:19', 85, NULL, NULL, b'1'),
+(80, 135, 63, 85, b'01', '../Member/63/135/Attachment/Attachment_[0]_050321022709.pdf', b'1', '2021-04-28 11:53:07', b'01', '599', 'Data intelligence', 'IT', '2021-04-28 11:51:18', 85, '2021-04-28 11:53:07', 85, b'1');
 
 -- --------------------------------------------------------
 
@@ -127,7 +131,9 @@ INSERT INTO `notecategories` (`ID`, `Name`, `Description`, `CreatedDate`, `Creat
 (3, 'CA', 'Charted Accountant', '2021-03-02 11:11:56', 70, '2021-04-09 20:57:43', 81, b'1'),
 (4, 'MBA', 'Management Department', '2021-03-02 11:12:22', 70, NULL, NULL, b'1'),
 (5, 'History', 'It\'s History of the world', '2021-04-09 20:49:53', 81, '2021-04-09 21:04:43', 82, b'0'),
-(6, 'Science', 'It\'s  for  science book', '2021-04-09 20:59:27', 82, NULL, NULL, b'1');
+(6, 'Science', 'It\'s  for  science book', '2021-04-09 20:59:27', 82, NULL, NULL, b'1'),
+(7, 'sd', 'sd category', '2021-04-27 18:26:51', 70, '2021-04-27 18:26:59', 70, b'0'),
+(8, 'srr', 'sssss', '2021-04-28 12:21:16', 70, '2021-04-28 12:21:46', 70, b'0');
 
 -- --------------------------------------------------------
 
@@ -271,7 +277,11 @@ INSERT INTO `sellernotes` (`ID`, `SellerID`, `Status`, `ActionedBy`, `AdminRemar
 (187, 63, 9, 70, NULL, '2021-04-08 14:13:30', 'computer science', 2, 'DP_300321063755.jpg', 3, 124, 'computer science book of india', 'SVND', 1, 'computer', '656563', 'mr.g.mexwell', 5, '0', 'Preview_300321063755.pdf', '2021-03-30 22:07:55', 63, NULL, 63, b'1'),
 (188, 65, 11, 70, NULL, '2021-04-09 12:21:58', 'aaa', 1, 'DP_090421084039.jpg', 1, 122, 'wssdw', 'NA', 2, 'NA', 'NA', 'NA', 5, '0', 'Preview_090421084039.pdf', '2021-04-09 12:10:39', 65, '2021-04-09 12:10:39', 65, b'0'),
 (189, 65, 11, 70, NULL, NULL, 'ppp', 1, 'DP_090421084648.jpg', 1, 0, 'aewe', 'NA', 1, 'NA', 'NA', 'NA', 4, '500', 'Preview_090421084648.pdf', '2021-04-09 12:16:48', 65, '2021-04-09 12:16:48', 65, b'0'),
-(191, 66, 9, 70, NULL, '2021-04-10 17:52:00', 'check', 6, '', 4, 0, 'checking...!!!!!!!', 'NA', 1, 'NA', 'NA', 'NA', 5, '0', 'Preview_100421021503.pdf', '2021-04-10 17:45:03', 66, '2021-04-10 17:45:03', 66, b'1');
+(191, 66, 9, 70, NULL, '2021-04-10 17:52:00', 'check', 6, '', 4, 0, 'checking...!!!!!!!', 'NA', 1, 'NA', 'NA', 'NA', 5, '0', 'Preview_100421021503.pdf', '2021-04-10 17:45:03', 66, '2021-04-10 17:45:03', 66, b'1'),
+(192, 66, 7, 66, NULL, NULL, 'check1', 1, 'DP_120421092528.png', 4, 20, 'checking ', 'NA', 1, 'NA', 'NA', 'NA', 5, '0', 'Preview_120421092915.pdf', '2021-04-12 10:51:42', 66, '2021-04-12 13:29:50', 66, b'1'),
+(208, 84, 11, 70, 'nathi barobar\r\n', '2021-04-27 18:18:53', 'Jitesh1', 2, '', 4, 0, 'des', 'NA', 1, 'NA', 'NA', 'NA', 5, '0', 'Preview_270421024330.pdf', '2021-04-27 18:13:30', 84, '2021-04-27 18:21:20', 70, b'0'),
+(209, 85, 9, 70, NULL, '2021-04-28 12:17:18', 'aaaaaa', 1, '', 4, 0, 'aaa', 'NA', 1, 'NA', 'NA', 'NA', 5, '0', 'Preview_280421083616.pdf', '2021-04-28 12:06:16', 85, '2021-04-28 12:07:54', 85, b'1'),
+(210, 85, 9, 70, 'barobar nathi', '2021-04-28 12:19:08', 'sssss', 2, '', 4, 0, 'aaaaa', 'NA', 1, 'NA', 'NA', 'NA', 4, '50', 'Preview_280421084256.pdf', '2021-04-28 12:12:56', 85, '2021-04-28 12:17:41', 70, b'1');
 
 -- --------------------------------------------------------
 
@@ -336,7 +346,11 @@ INSERT INTO `sellernotesattachements` (`ID`, `NoteID`, `FileName`, `FilePath`, `
 (181, 187, 'Attachment_300321063755.zip', '../Member/63/187/Attachment/Attachment_300321063755.zip', '2021-03-30 22:07:55', 63, NULL, 63, b'1'),
 (182, 188, 'Attachment_[0]_090421084039.pdf', '../Member/65/188/Attachment/Attachment_[0]_090421084039.pdf', '2021-04-09 12:10:39', 65, NULL, 65, b'0'),
 (183, 189, 'Attachment_[0]_090421084648.pdf', '../Member/65/189/Attachment/Attachment_[0]_090421084648.pdf', '2021-04-09 12:16:48', 65, NULL, 65, b'0'),
-(185, 191, 'Attachment_[0]_100421021503.pdf', '../Member/66/191/Attachment/Attachment_[0]_100421021503.pdf', '2021-04-10 17:45:03', 66, NULL, 66, b'1');
+(185, 191, 'Attachment_[0]_100421021503.pdf', '../Member/66/191/Attachment/Attachment_[0]_100421021503.pdf', '2021-04-10 17:45:03', 66, NULL, 66, b'1'),
+(186, 192, 'Attachment_120421095824.zip', '../Member/66/192/Attachment/Attachment_120421095824.zip', '2021-04-12 10:51:42', 66, '2021-04-12 13:28:24', 66, b'1'),
+(202, 208, 'Attachment_270421024502.zip', '../Member/84/208/Attachment/Attachment_270421024502.zip', '2021-04-27 18:13:30', 84, '2021-04-27 18:15:02', 84, b'1'),
+(203, 209, 'Attachment_280421083753.zip', '../Member/85/209/Attachment/Attachment_280421083753.zip', '2021-04-28 12:06:16', 85, '2021-04-28 12:07:54', 85, b'1'),
+(204, 210, 'Attachment_[0]_280421084256.pdf', '../Member/85/210/Attachment/Attachment_[0]_280421084256.pdf', '2021-04-28 12:12:56', 85, NULL, 85, b'1');
 
 -- --------------------------------------------------------
 
@@ -393,7 +407,8 @@ INSERT INTO `sellernotesreviews` (`ID`, `NoteID`, `ReviewedByID`, `AgainstDownlo
 (11, 115, 62, 35, '4', 'good book for beginers', '2021-03-27 15:21:43', 62, NULL, NULL, b'1'),
 (12, 116, 63, 39, '5', 'it\'s Amazing', '2021-03-27 15:22:40', 63, NULL, NULL, b'1'),
 (14, 132, 63, 43, '4', 'lorem ipsum!!!!!!!', '2021-03-27 15:23:47', 63, NULL, NULL, b'1'),
-(15, 132, 62, 36, '5', 'Lorem Ipsum Is The Best....!!!!!!!', '2021-04-07 15:34:46', 62, NULL, NULL, b'1');
+(15, 132, 62, 36, '5', 'Lorem Ipsum Is The Best....!!!!!!!', '2021-04-07 15:34:46', 62, NULL, NULL, b'1'),
+(16, 191, 84, 77, '4', 'check ready', '2021-04-27 17:58:30', 84, NULL, NULL, b'1');
 
 -- --------------------------------------------------------
 
@@ -420,7 +435,7 @@ INSERT INTO `systemconfigurations` (`ID`, `KeyName`, `Value`, `CreatedDate`, `Cr
 (1, 'SupportEmail', 's@gmail.com', '2021-04-10 16:08:00', NULL, NULL, NULL, b'1'),
 (2, 'SupportPhone', '9876543210', '2021-04-10 16:08:00', NULL, NULL, NULL, b'1'),
 (3, 'Emails', 'a@gmail.com,b@gmail.com', '2021-04-10 16:11:35', NULL, NULL, NULL, b'1'),
-(4, 'FacebookURL', 'https://www.facebook.com/', '2021-04-10 16:11:35', NULL, NULL, NULL, b'1'),
+(4, 'FacebookURL', 'https://www.facebook.com/suraj', '2021-04-10 16:11:35', NULL, NULL, NULL, b'1'),
 (5, 'TwitterURL', 'https://twitter.com/', '2021-04-10 16:11:35', NULL, NULL, NULL, b'1'),
 (6, 'LinkedinURL', 'https://www.linkedin.com/', '2021-04-10 16:11:35', NULL, NULL, NULL, b'1'),
 (7, 'DefaultNoteImage', '../images/note/example.jpg', '2021-04-10 16:11:35', NULL, NULL, NULL, b'1'),
@@ -467,7 +482,9 @@ INSERT INTO `userprofile` (`ID`, `UserID`, `DOB`, `Gender`, `SecondaryEmailAddre
 (15, 80, NULL, NULL, NULL, '+91', '7894561230', NULL, ' ', ' ', ' ', ' ', ' ', ' ', NULL, NULL, '2021-04-09 19:19:51', NULL, NULL, NULL, b'1'),
 (16, 81, NULL, NULL, 'svndpro@gmail.com', '+91', '1234567890', '../Member/81/DP_100421075523.jpg', ' ', ' ', ' ', ' ', ' ', ' ', NULL, NULL, '2021-04-09 19:33:34', NULL, '2021-04-10 11:35:19', 81, b'1'),
 (17, 82, NULL, NULL, NULL, '+91', '8748445547', NULL, ' ', ' ', ' ', ' ', ' ', ' ', NULL, NULL, '2021-04-09 19:36:12', NULL, NULL, NULL, b'1'),
-(18, 66, '2003-03-26 00:00:00', 1, NULL, '+91', '1234567890', '../Member/66/DP_100421020037.jpg', 'address1', 'address2', 'city', 'state', '123456', 'India', '', '', '2021-04-10 17:30:37', 66, NULL, NULL, b'1');
+(18, 66, '2003-03-26 00:00:00', 1, NULL, '+91', '1234567890', '../Member/66/DP_100421020037.jpg', 'address1', 'address2', 'city', 'state', '123456', 'India', NULL, NULL, '2021-04-10 17:30:37', 66, NULL, NULL, b'1'),
+(21, 84, NULL, NULL, NULL, '+91', '1234567890', '../images/person/t1.jpg', 'aaaaaAAA', 'bbbbbb', 'cccccccC', 'sssssss', '11111111', 'India', NULL, NULL, '2021-04-27 19:32:35', 84, '2021-04-27 19:38:32', 84, b'1'),
+(22, 85, '0000-00-00 00:00:00', NULL, NULL, '+91', '1234567890', '../images/person/t1.jpg', 'aaaaaaaa', 'bbbbbb', 'cccccc', 'ssssssssssss', '412345', 'India', NULL, NULL, '2021-04-28 11:42:04', 85, '2021-04-28 11:42:14', 85, b'1');
 
 -- --------------------------------------------------------
 
@@ -533,7 +550,9 @@ INSERT INTO `users` (`ID`, `RoleID`, `FirstName`, `LastName`, `EmailID`, `Passwo
 (80, 2, 'Niks', 'Delicious', 'nd@gmail.com', '$2y$10$u6kGYUCJHR8VJbAy4ivin.tRUhyrgW4ja0gyOvHH/1w3hPZ.opUX6', '652e92b1@Nmp1', b'1', '', '2021-04-09 19:19:51', NULL, '2021-04-09 20:05:56', 69, b'0'),
 (81, 2, 'Shubham', 'Dhanani', 'shubham@gmail.com', '$2y$10$dxZS/MRJnC6TRymUnEhiyuRxEQyvoyVtnF1jJhHro0w77kzDxuLNq', 'd93ff613@Nmp1', b'1', '', '2021-04-09 19:33:34', NULL, '2021-04-10 11:11:04', NULL, b'1'),
 (82, 2, 'SND', 'Dhanani', 'sndha@gmail.com', '$2y$10$6SaCfwnhxK2cCII31JU9tuv8Bsg.MAHzBBCdIaWdi5LpkJyLmwDmO', '2ac6c56a@Nmp1', b'1', '', '2021-04-09 19:36:12', NULL, NULL, NULL, b'1'),
-(83, 3, 'VND', 'Dhanani', 'vnd@gmail.com', '$2y$10$8oUG0eWtDjQX/rPlEFE6Fu5EAR2PQuHtitAlWX7Kw2aXE3sPklX9C', NULL, b'1', 'f092e5af980bed0470989fffe73e87', '2021-04-10 15:05:29', NULL, NULL, NULL, b'1');
+(83, 3, 'VND', 'Dhanani', 'vnd@gmail.com', '$2y$10$8oUG0eWtDjQX/rPlEFE6Fu5EAR2PQuHtitAlWX7Kw2aXE3sPklX9C', NULL, b'1', 'f092e5af980bed0470989fffe73e87', '2021-04-10 15:05:29', NULL, NULL, NULL, b'1'),
+(84, 3, 'Jitesh', 'karavadra', 'jk@gmail.com', '$2y$10$w/rSXx7L/3MHksah0fOkm.ioAdn.ZmIksm3fX7NvsK7uk2/cF4Sdy', NULL, b'1', '33500531f77f2d1945ddb02d785251', '2021-04-27 17:46:34', NULL, NULL, NULL, b'1'),
+(85, 3, 'surajrrr', 'Rathod', 'sr@gmail.com', '$2y$10$h2W2nM7t03gc1oUocf/cQOLZggqXewdFkv6xfnEPhaKr833AL9XQ6', NULL, b'1', 'c9dc50b72b2dbf4e3b84b03388a793', '2021-04-28 11:38:16', NULL, '2021-04-28 11:42:14', NULL, b'1');
 
 --
 -- Indexes for dumped tables
@@ -651,13 +670,13 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `downloads`
 --
 ALTER TABLE `downloads`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `notecategories`
 --
 ALTER TABLE `notecategories`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `notetypes`
@@ -675,25 +694,25 @@ ALTER TABLE `referencedata`
 -- AUTO_INCREMENT for table `sellernotes`
 --
 ALTER TABLE `sellernotes`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
 
 --
 -- AUTO_INCREMENT for table `sellernotesattachements`
 --
 ALTER TABLE `sellernotesattachements`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
 
 --
 -- AUTO_INCREMENT for table `sellernotesreportedissues`
 --
 ALTER TABLE `sellernotesreportedissues`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `sellernotesreviews`
 --
 ALTER TABLE `sellernotesreviews`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `systemconfigurations`
@@ -705,7 +724,7 @@ ALTER TABLE `systemconfigurations`
 -- AUTO_INCREMENT for table `userprofile`
 --
 ALTER TABLE `userprofile`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `userroles`
@@ -717,7 +736,7 @@ ALTER TABLE `userroles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- Constraints for dumped tables
