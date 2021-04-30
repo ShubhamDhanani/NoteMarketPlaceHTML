@@ -3,6 +3,7 @@ session_start();
 include '../php/dbcon.php';
 include '../src/mail.php';
 $pagename="Add_Admin";
+$textr="";
 
 if(!isset($_SESSION['fname']) or $_SESSION['role']==3 or $_SESSION['role']==2){
     header("location:../front/login.php");
@@ -47,10 +48,8 @@ if(isset($_GET['editadmin'])){
     $sel = mysqli_query($con,"select * from users where EmailID='$email'");
     $count= mysqli_num_rows($sel);
     if($count>0){
+        $textr="Email Already Exist In Database Pls Try With Different Email *";
         ?>
-<script>
-    alert("Email Already Exist In Database Pls Try With Different Email");
-</script>
 <?php
     }
     else{
@@ -135,6 +134,9 @@ if(isset($_GET['editadmin'])){
     <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
         <div class="user-heading">
             <h3>Add Administrator</h3>
+            <small class="form-text text-muted text-left" style="margin-top:-30px;">
+            <p style="color:red;"><?php echo $textr; ?></p>
+            </small>
         </div>
         <div class="row">
             <div class="col-md-8">

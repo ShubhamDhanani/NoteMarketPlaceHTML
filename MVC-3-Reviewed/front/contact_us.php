@@ -4,6 +4,7 @@ include '../php/dbcon.php';
 include '../src/mail.php';
 $pagename="ContactUs";
 $table= "no";
+$textg="";
 
    if(isset($_POST['submit'])){
        $username= mysqli_real_escape_string($con,$_POST['username'] );
@@ -47,17 +48,20 @@ $table= "no";
        $mail->AltBody = 'Plain text message body for non-HTML email client. Gmail SMTP email body.'; //Alternate body of email
 
        $mail->send();
-       ?>
-<script>
-    alert("query sent successfully");
-</script>
-<?php
+       
+       $textg="Your Query Sent Successfully *";
+       
        }    
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
+
+<script>
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+</script>
 
 <?php include '../php/front-header.php'; ?>
 <!-- User Profile -->
@@ -74,6 +78,9 @@ $table= "no";
         <div class="contact-heading">
             <h3>Get in Touch</h3>
             <p>Let us know how to get back to you</p>
+            <small class="form-text text-muted text-left" style="margin:0px;margin-top:-50px;">
+            <p style="color:green;font-size:15px;"><?php echo $textg; ?></p>
+            </small>
         </div>
         <div class="row">
             <div class="col-md-6">

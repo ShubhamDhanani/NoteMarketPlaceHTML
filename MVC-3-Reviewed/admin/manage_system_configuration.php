@@ -2,6 +2,8 @@
 session_start();
 include '../php/dbcon.php';
 $pagename="Manage_System_Config";
+$textp="";
+$textn="";
 
 if(!isset($_SESSION['fname']) or $_SESSION['role']==3 or $_SESSION['role']==2){
     header("location:../front/login.php");
@@ -18,6 +20,13 @@ if(isset($_POST['submit'])){
     $pp= $_FILES['pp'];
     
     
+                
+    
+                $ppname = $pp['name'];
+                $pp_ext = explode('.',$ppname);
+                $pp_ext_check = strtolower(end($pp_ext));
+                $valid_pp_ext = array('jpg');
+                if(in_array($pp_ext_check,$valid_pp_ext)){
                 $folder_path1 = "../images/person/";
                 $files1 = glob($folder_path1.'/*');
 
@@ -29,12 +38,7 @@ if(isset($_POST['submit'])){
                 // Delete the given file
                 unlink($file);
                 }
-    
-                $ppname = $pp['name'];
-                $pp_ext = explode('.',$ppname);
-                $pp_ext_check = strtolower(end($pp_ext));
-                $valid_pp_ext = array('jpg');
-                if(in_array($pp_ext_check,$valid_pp_ext)){
+                
                 $ppnewname = 't1.'.$pp_ext_check;
                 $pppath = $pp['tmp_name'];
                 if(!is_dir("../images/person/")){
@@ -44,14 +48,18 @@ if(isset($_POST['submit'])){
                 move_uploaded_file($pppath,$pp_dest);
                 }
                 else{
-                ?>
-                <script>
-                    alert("profile pic should be in jpg format only");
-                </script>
-                <?php
+                    $textp="profile pic should be in jpg format only";
+                
                 }
     
     
+                
+    
+                $npname = $np['name'];
+                $np_ext = explode('.',$npname);
+                $np_ext_check = strtolower(end($np_ext));
+                $valid_np_ext = array('jpg');
+                if(in_array($np_ext_check,$valid_np_ext)){
                 $folder_path2 = "../images/note/";
                 $files2 = glob($folder_path2.'/*');
 
@@ -63,12 +71,7 @@ if(isset($_POST['submit'])){
                 // Delete the given file
                 unlink($file);
                 }
-    
-                $npname = $np['name'];
-                $np_ext = explode('.',$npname);
-                $np_ext_check = strtolower(end($np_ext));
-                $valid_np_ext = array('jpg');
-                if(in_array($np_ext_check,$valid_np_ext)){
+                    
                 $npnewname = 'example.'.$np_ext_check;
                 $nppath = $np['tmp_name'];
                 if(!is_dir("../images/note/")){
@@ -78,11 +81,7 @@ if(isset($_POST['submit'])){
                 move_uploaded_file($nppath,$np_dest);
                 }
                 else{
-                ?>
-                <script>
-                    alert("Note pic should be in jpg format only");
-                </script>
-                <?php
+                $textn="Note pic should be in jpg format only";
                 }
     
                 
@@ -94,7 +93,7 @@ if(isset($_POST['submit'])){
                 $up5 = mysqli_query($con,"update systemconfigurations SET Value='$turl' where ID=5");
                 $up6 = mysqli_query($con,"update systemconfigurations SET Value='$lurl' where ID=6");
             
-                if($up1 and $up2 and $up3 and $up4 and $up5 and $up6){
+                if($up1 and $up2 and $up3 and $up4 and $up5 and $up6 and $textp=="" and $textn==""){
                     header("location:dashboard.php");
                 }
 }
@@ -154,6 +153,9 @@ $re6 = mysqli_fetch_assoc($sel6);
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="exampleInputfname">Default image for notes (if seller do not upload)*</label>
+                            <small class="form-text text-muted text-left">
+                            <p style="color:red;margin-top:-10px;"><?php echo $textn; ?></p>
+                            </small>
                         <div class="upload-custom">
                             <button onclick="document.getElementById('getnote').click()">
                                 <img src="../images/icons/upload-file.png">
@@ -166,6 +168,9 @@ $re6 = mysqli_fetch_assoc($sel6);
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <label for="exampleInputfname">Default profile picture (if seller do not upload)*</label>
+                        <small class="form-text text-muted text-left">
+                            <p style="color:red;margin-top:-10px;"><?php echo $textp; ?></p>
+                            </small>
                         <div class="upload-custom">
                             <button onclick="document.getElementById('getprofile').click()">
                                 <img src="../images/icons/upload-file.png">
